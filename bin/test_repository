@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# list packages that the tests requires infra dependency
+PACKAGES=()
+
+PKG=()
+
+for P in ${PACKAGES[@]}; do
+  PKG+=" ${P}"
+done
+
+gotestsum --junitfile=out/junit-repository.xml --format=testname -- -p=4 -cover -coverpkg=$PKG -cover -coverprofile=out/coverage-repository.out -covermode=atomic $PKG

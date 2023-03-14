@@ -1,0 +1,11 @@
+#!/bin/bash
+
+PACKAGES=$(go list github.com/malamsyah/go-skele/... | grep -Ev "mock|factory|repository")
+DISCARDS=()
+
+# Remove discarded packages
+for PKG in ${DISCARDS[@]}; do
+  PACKAGES=("${PACKAGES[@]/$PKG}")
+done
+
+gotestsum --junitfile=out/junit-unit.xml --format=testname -- -coverprofile=out/coverage.out -covermode=atomic $PACKAGES
