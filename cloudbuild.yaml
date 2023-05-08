@@ -1,15 +1,28 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+  env:
+    - GO111MODULE=on
+  volumes:
+    - name: go-modules
+      path: /go
+
 steps:
-  - id: go_version
-    name: "gcr.io/cloud-builders/go"
-    args: ["version"]
+  - id: go_test
+    name: golang:1.20
+    dir: .
+    args: ["go", "test", "./..."]
   - id: go_linter
     name: "golangci/golangci-lint"
     args: ["golangci-lint","run"]
-  - id: go_test
-    name: "gcr.io/cloud-builders/go"
-    args: ["test","-v ./..."]
   - id: go_security
     name: "securego/gosec"
     args: ["./..."]
-options:
-  logging: CLOUD_LOGGING_ONLY
+
+
+# steps:
+#   - id: go_version
+#     name: "gcr.io/cloud-builders/go"
+#     args: ["version"]
+#   - id: go_test
+#     name: "gcr.io/cloud-builders/go"
+#     args: ["test","-v ./..."]
