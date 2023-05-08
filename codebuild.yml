@@ -23,7 +23,9 @@ steps:
         go install github.com/jstemmer/go-junit-report/v2@latest
         2>&1 go test -timeout 1m -v ./... | /go/bin/go-junit-report -set-exit-code -iocopy -out ${SHORT_SHA}_test_log.xml
   # [END cloudbuild_go_test_yaml]
-  
+options:
+  logging: CLOUD_LOGGING_ONLYLY
+
 #   # [START cloudbuild_go_image_yaml]
 #   # Docker Build
 #   - name: 'gcr.io/cloud-builders/docker'
@@ -57,6 +59,3 @@ steps:
 # images:
 #   - us-central1-docker.pkg.dev/$PROJECT_ID/$_REPO_NAME/myimage:$SHORT_SHA
 # # [END cloudbuild_go_yaml]
-
-options:
-  logging: NONE
