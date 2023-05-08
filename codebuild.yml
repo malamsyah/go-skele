@@ -24,7 +24,7 @@ steps:
         2>&1 go test -timeout 1m -v ./... | /go/bin/go-junit-report -set-exit-code -iocopy -out ${SHORT_SHA}_test_log.xml
   # [END cloudbuild_go_test_yaml]
 options:
-  logging: CLOUD_LOGGING_ONLYLY
+  logging: CLOUD_LOGGING_ONLY
 
 #   # [START cloudbuild_go_image_yaml]
 #   # Docker Build
