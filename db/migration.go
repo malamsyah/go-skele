@@ -36,6 +36,7 @@ func GenerateMigrationFile(name string) error {
 		}
 
 		filename := filepath.Join("./db/migrations", finalname)
+		filename = filepath.Clean(filename)
 
 		_, err = os.OpenFile(filename, os.O_RDWR|os.O_CREATE|os.O_EXCL, ReadWriteEveryonePermission)
 		if err != nil {
