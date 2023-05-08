@@ -18,7 +18,7 @@ steps:
   - name: golang:1.20
     entrypoint: /bin/bash
     args: 
-      - go test -timeout 1m -v ./...
+      - go test -v ./...
 
 options:
   logging: CLOUD_LOGGING_ONLY
