@@ -10,19 +10,10 @@ steps:
   - id: go_test
     name: golang:1.20
     dir: .
-    args: ["go", "test", "./..."]
+    args: ["go", "test", "-v", "./..."]
   - id: go_linter
     name: "golangci/golangci-lint"
     args: ["golangci-lint","run"]
   - id: go_security
     name: "securego/gosec"
     args: ["./..."]
-
-
-# steps:
-#   - id: go_version
-#     name: "gcr.io/cloud-builders/go"
-#     args: ["version"]
-#   - id: go_test
-#     name: "gcr.io/cloud-builders/go"
-#     args: ["test","-v ./..."]
