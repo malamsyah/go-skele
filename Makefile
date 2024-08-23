@@ -2,7 +2,7 @@ SHELL=/bin/bash -e -o pipefail
 PWD = $(shell pwd)
 
 # constants
-GOLANGCI_VERSION = 1.51.2
+GOLANGCI_VERSION = 1.60.3
 DOCKER_REPO = go-skele-service-app
 DOCKER_TAG = latest
 
@@ -74,7 +74,7 @@ out/report.json: out
 	@go test -count 1 ./... -coverprofile=out/coverage.out --json | tee "$(@)"
 
 clean: ## Cleans up everything
-	@rm -rf bin out
+	@rm -rf out
 
 docker: ## Builds docker image
 	docker buildx build -t $(DOCKER_REPO):$(DOCKER_TAG) .

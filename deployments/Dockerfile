@@ -1,4 +1,4 @@
-FROM golang:1.18-alpine AS builder
+FROM golang:latest AS builder
 
 WORKDIR /opt/go_skele
 
