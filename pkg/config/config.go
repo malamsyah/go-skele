@@ -7,7 +7,12 @@ import (
 )
 
 type Config struct {
-	AppPort string
+	AppPort    string
+	DBHost     string
+	DBUser     string
+	DBPassword string
+	DBName     string
+	DBPort     string
 }
 
 // nolint: gochecknoglobals
@@ -22,7 +27,12 @@ func init() {
 	}
 
 	configInstance = &Config{
-		AppPort: viper.GetString("APP_PORT"),
+		AppPort:    viper.GetString("APP_PORT"),
+		DBHost:     viper.GetString("DB_HOST"),
+		DBUser:     viper.GetString("DB_USER"),
+		DBPassword: viper.GetString("DB_PASSWORD"),
+		DBName:     viper.GetString("DB_NAME"),
+		DBPort:     viper.GetString("DB_PORT"),
 	}
 }
 
